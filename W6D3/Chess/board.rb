@@ -4,13 +4,15 @@ class Board
     attr_reader :rows
 
     def initialize 
-        @rows = Array.new(8) {Array.new(8)}
-        (0..1).each do |i|
-            (0..7).each do |j|
-                pos = [i,j]
-                self[pos] = NullPiece.new
-            end
-        end
+        # @null = 
+        @rows = Array.new(8) {Array.new(8) {NullPiece.instance}}
+        add_pawn
+        # (0..1).each do |i|
+        #     (0..7).each do |j|
+        #         pos = [i,j]
+        #         self[pos] = NullPiece.new
+        #     end
+        # end
     end 
 
     def move_piece(start_pos, end_pos)
@@ -28,6 +30,24 @@ class Board
     #     end 
     # end
 
+
+    def add_pawn
+        #White pawns
+        (0..7).each do |col|
+            pos = [6, col]
+            
+            self[pos] = Pawn.new(:white,rows,pos,:Wpawn)
+        end
+
+        #Black pawns
+        (0..7).each do |col|
+            pos = [1, col]
+            
+            self[pos] = Pawn.new(:black,rows,pos,:Bpawn)
+        end
+
+    end
+
     def [](pos)
         row, col = pos 
         @rows[row][col]
@@ -43,3 +63,6 @@ class Board
     # end 
 
 end 
+
+test = Board.new
+p test.rows
