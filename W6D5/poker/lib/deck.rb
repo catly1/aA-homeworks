@@ -13,11 +13,22 @@ class Deck
     deck
   end
 
-  def initialize
-    @deck = Deck.all_cards
+  def initialize(cards = Deck.all_cards)
+    @cards = Deck.all_cards
   end
 
   def count
     @deck.count
+  end
+
+  def take(n)
+    if n > count
+      raise "not enough cards"
+    end
+    taken = []
+    n.times do
+      taken << @cards.shift
+    end
+    taken
   end
 end
