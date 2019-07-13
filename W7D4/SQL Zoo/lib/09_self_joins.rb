@@ -1,3 +1,46 @@
+
+require_relative './sqlzoo.rb'
+
+def num_stops
+  # How many stops are in the database?
+  execute(<<-SQL)
+  SELECT
+    COUNT(id)
+  FROM
+    stops;
+  SQL
+end
+
+def craiglockhart_id
+  # Find the id value for the stop 'Craiglockhart'.
+  execute(<<-SQL)
+  SELECT
+    id
+  FROM
+    stops
+  WHERE
+    name = 'Craiglockhart';
+  SQL
+end
+
+
+
+
+def lrt_stops
+  # Give the id and the name for the stops on the '4' 'LRT' service.
+  execute(<<-SQL)
+  SELECT
+    stop_id, stops.name
+  FROM
+    routes
+  JOIN
+    stops on stops.id = routes.stop_id
+  WHERE
+    routes.company = 'LRT' AND
+    routes.num = '4'
+  SQL
+end
+
 # == Schema Information
 #
 # Table name: stops
@@ -11,26 +54,6 @@
 #  company     :string       not null, primary key
 #  pos         :integer      not null, primary key
 #  stop_id     :integer
-
-require_relative './sqlzoo.rb'
-
-def num_stops
-  # How many stops are in the database?
-  execute(<<-SQL)
-  SQL
-end
-
-def craiglockhart_id
-  # Find the id value for the stop 'Craiglockhart'.
-  execute(<<-SQL)
-  SQL
-end
-
-def lrt_stops
-  # Give the id and the name for the stops on the '4' 'LRT' service.
-  execute(<<-SQL)
-  SQL
-end
 
 def connecting_routes
   # Consider the following query:
@@ -51,6 +74,19 @@ def connecting_routes
   # that link these stops have a count of 2. Add a HAVING clause to restrict
   # the output to these two routes.
   execute(<<-SQL)
+  SELECT
+    company,
+    num,
+    COUNT(*)
+  FROM
+    routes
+  WHERE
+    stop_id = 149 OR stop_id = 53
+  GROUP BY
+    company, num
+  HAVING
+    COUNT(*) = 2;
+
   SQL
 end
 

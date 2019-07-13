@@ -75,6 +75,20 @@ def teachers_and_depts
   SQL
 end
 
+
+
+def num_teachers_and_mobiles
+  # Use COUNT to show the number of teachers and the number of
+  # mobile phones.
+  # NB: COUNT only counts non-NULL values.
+  execute(<<-SQL)
+  SELECT
+    COUNT(id), COUNT(mobile)
+  FROM 
+    teachers
+  SQL
+end
+
 # == Schema Information
 #
 # Table name: teachers
@@ -89,26 +103,20 @@ end
 #
 #  id          :integer      not null, primary key
 #  name        :string       not null
-
-def num_teachers_and_mobiles
-  # Use COUNT to show the number of teachers and the number of
-  # mobile phones.
-  # NB: COUNT only counts non-NULL values.
-  execute(<<-SQL)
-  SELECT
-    COUNT(id), COUNT(mobile)
-  FROM 
-    teachers
-  SQL
-end
-
 def dept_staff_counts
   # Use COUNT and GROUP BY dept.name to show each department and
   # the number of staff. Structure your JOIN to ensure that the
   # Engineering department is listed.
+
   execute(<<-SQL)
   SELECT
-    COUNT()
+    depts.name, COUNT(teachers.name)
+  FROM
+    depts
+  LEFT JOIN
+    teachers ON teachers.dept_id = depts.id 
+  GROUP BY
+    depts.name
   SQL
 end
 
@@ -116,6 +124,17 @@ def teachers_and_divisions
   # Use CASE to show the name of each teacher followed by 'Sci' if
   # the the teacher is in dept 1 or 2 and 'Art' otherwise.
   execute(<<-SQL)
+  SELECT
+    teachers.name,
+    CASE depts.id
+      WHEN 1 THEN 'Sci'
+      WHEN 2 THEN 'Sci'
+      ELSE 'Art'
+    END
+  FROM
+    teachers
+  LEFT JOIN
+    depts on depts.id = teachers.dept_id;
   SQL
 end
 
@@ -124,5 +143,18 @@ def teachers_and_divisions_two
   # the teacher is in dept 1 or 2, 'Art' if the dept is 3, and
   # 'None' otherwise.
   execute(<<-SQL)
+  SELECT
+    teachers.name,
+    CASE depts.id
+      WHEN 1 THEN 'Sci'
+      WHEN 2 THEN 'Sci'
+      WHEN 3 THEN 'Art'
+      ELSE 'None'
+    END
+  FROM
+    teachers
+  LEFT JOIN
+    depts on depts.id = teachers.dept_id;
+
   SQL
 end
