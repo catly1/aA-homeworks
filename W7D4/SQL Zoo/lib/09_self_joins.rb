@@ -41,19 +41,7 @@ def lrt_stops
   SQL
 end
 
-# == Schema Information
-#
-# Table name: stops
-#
-#  id          :integer      not null, primary key
-#  name        :string
-#
-# Table name: routes
-#
-#  num         :string       not null, primary key
-#  company     :string       not null, primary key
-#  pos         :integer      not null, primary key
-#  stop_id     :integer
+
 
 def connecting_routes
   # Consider the following query:
@@ -90,6 +78,8 @@ def connecting_routes
   SQL
 end
 
+
+
 def cl_to_lr
   # Consider the query:
   #
@@ -108,7 +98,20 @@ def cl_to_lr
   # Observe that b.stop_id gives all the places you can get to from
   # Craiglockhart, without changing routes. Change the query so that it
   # shows the services from Craiglockhart to London Road.
+  # London Road  = 149
   execute(<<-SQL)
+    SELECT
+      a.company,
+      a.num,
+      a.stop_id,
+      b.stop_id
+    FROM
+      routes a
+    JOIN
+      routes b ON (a.company = b.company AND a.num = b.num)
+    WHERE
+      a.stop_id = 53 AND
+      b.stop_id = 149;
   SQL
 end
 
@@ -136,13 +139,43 @@ def cl_to_lr_by_name
   # number. Change the query so that the services between 'Craiglockhart' and
   # 'London Road' are shown.
   execute(<<-SQL)
+    SELECT
+      a.company,
+      a.num,
+      stopa.name,
+      stopb.name
+    FROM
+      routes a
+    JOIN
+      routes b ON (a.company = b.company AND a.num = b.num)
+    JOIN
+      stops stopa ON (a.stop_id = stopa.id)
+    JOIN
+      stops stopb ON (b.stop_id = stopb.id)
+    WHERE
+      stopa.name = 'Craiglockhart'
+      AND
+      stopb.name = 'London Road'
   SQL
 end
+
+
 
 def haymarket_and_leith
   # Give the company and num of the services that connect stops
   # 115 and 137 ('Haymarket' and 'Leith')
   execute(<<-SQL)
+  SELECT DISTINCT
+    a.company,
+    a.num
+  FROM
+    routes AS a
+  JOIN
+    routes AS b ON (a.company = b.company AND  a.num = b.num)
+  WHERE
+    a.stop_id = 115 AND
+    b.stop_id = 137
+  
   SQL
 end
 
@@ -150,14 +183,47 @@ def craiglockhart_and_tollcross
   # Give the company and num of the services that connect stops
   # 'Craiglockhart' and 'Tollcross'
   execute(<<-SQL)
+  SELECT DISTINCT
+    a.company,
+    a.num
+  FROM
+    routes AS a
+  JOIN
+    routes AS b ON (a.company = b.company AND  a.num = b.num)
+  WHERE
+    a.stop_id = 53 AND
+    b.stop_id = 230
+
   SQL
 end
+
+# == Schema Information
+#
+# Table name: stops
+#
+#  id          :integer      not null, primary key
+#  name        :string
+#
+# Table name: routes
+#
+#  num         :string       not null, primary key
+#  company     :string       not null, primary key
+#  pos         :integer      not null, primary key
+#  stop_id     :integer
 
 def start_at_craiglockhart
   # Give a distinct list of the stops that can be reached from 'Craiglockhart'
   # by taking one bus, including 'Craiglockhart' itself. Include the stop name,
   # as well as the company and bus no. of the relevant service.
   execute(<<-SQL)
+  SELECT
+    name, company, num
+  FROM
+    routes
+  JOIN
+    stops ON stops.id = routes.stop_id
+  WHERE
+    routes.stop_id = 53;
   SQL
 end
 
