@@ -51,10 +51,10 @@ def teachers_and_mobiles
   # #number or '07986 444 2266'
   execute(<<-SQL)
   SELECT
-    name, 
-    COALESCE(mobile, '07986 444 2266') AS mobile
+    name, COALESCE(mobile, '07986 444 2266' ) AS mobile
   FROM
-    teachers
+    teachers;
+
 
   SQL
 end
@@ -89,20 +89,7 @@ def num_teachers_and_mobiles
   SQL
 end
 
-# == Schema Information
-#
-# Table name: teachers
-#
-#  id          :integer      not null, primary key
-#  dept_id     :integer
-#  name        :string
-#  phone       :integer
-#  mobile      :string
-#
-# Table name: depts
-#
-#  id          :integer      not null, primary key
-#  name        :string       not null
+
 def dept_staff_counts
   # Use COUNT and GROUP BY dept.name to show each department and
   # the number of staff. Structure your JOIN to ensure that the
@@ -120,21 +107,38 @@ def dept_staff_counts
   SQL
 end
 
+# == Schema Information
+#
+# Table name: teachers
+#
+#  id          :integer      not null, primary key
+#  dept_id     :integer
+#  name        :string
+#  phone       :integer
+#  mobile      :string
+#
+# Table name: depts
+#
+#  id          :integer      not null, primary key
+#  name        :string       not null
+
 def teachers_and_divisions
   # Use CASE to show the name of each teacher followed by 'Sci' if
   # the the teacher is in dept 1 or 2 and 'Art' otherwise.
   execute(<<-SQL)
   SELECT
-    teachers.name,
+    teachers.name, 
     CASE depts.id
-      WHEN 1 THEN 'Sci'
-      WHEN 2 THEN 'Sci'
-      ELSE 'Art'
+    WHEN 1 THEN 'Sci'
+    WHEN 2 THEN 'Sci'
+    ELSE 'Art'
     END
   FROM
     teachers
   LEFT JOIN
-    depts on depts.id = teachers.dept_id;
+    depts ON depts.id = teachers.dept_id
+
+
   SQL
 end
 

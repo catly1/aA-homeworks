@@ -1,0 +1,55 @@
+<h1>Donate a kitty!</h1>
+
+<h1>New Cat</h1>
+<form action="<%= cats_url %>" method="post">
+<label for="cat_name">Name</label>
+<input 
+    id="cat_name" 
+    type="text" 
+    name="cat[name]"
+    value="">
+<br>
+<br>
+<label for="cat_birth_date">Birth date</label>
+<input
+    type="date"
+    name="cat[birth_date]"
+    id="cat_birth_date"
+    value="">
+<br>
+<br>
+<label for="cat_color">Color</label>
+<select id="cat_color" name="cat[color]">
+    <option disabled selected>-- select a color --</option>
+    <%Cat::COLORS.each do |color|%>
+        <option value="<%= color%>"><%= color%></option>
+    <%end%>
+</select>
+<br>
+<br>
+<label for="cat_sex">Sex</label>
+<select id="cat_sex" name="cat[sex]">
+    <option disabled selected>-- Please Select --</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+</select>
+<br>
+<br>
+<label for="cat_description">Description</label>
+<br>
+ <textarea 
+    id="cat_description" 
+    type="text" 
+    name="cat[description]"
+    value=""></textarea>
+<br>
+<br>
+    <input type="submit" value="Create cat!">
+</form>
+
+
+
+
+
+
+

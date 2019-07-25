@@ -1,0 +1,17 @@
+<h1>Pick a cat!</h1>
+<p>Any cat!</p>
+
+<ul>
+	<% @cats.each do |cat| %>
+	<li>
+			<%= cat.name %>:
+			<a href="/cats/<%= cat.id %>">
+					<%= cat.name%>
+			</a>
+	</li>
+	<% end %>
+</ul>
+
+<form action="/cats/new">
+	<button type="submit">Donate a kitty!</button>
+</form>
