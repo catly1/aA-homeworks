@@ -1,0 +1,11 @@
+<a href="<%= new_band_album_url %>">
+    Add album
+</a>
+
+<h1>List of albums:<h1>
+ <ul>   
+ <% @albums.each do |album| %>
+      <div class="album-index-item">
+        <a href="<%= album_url(album) %>"><%= album.title %></a>
+<% end %>
+</ul>

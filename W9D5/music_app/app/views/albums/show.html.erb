@@ -1,0 +1,20 @@
+  <h1><%= @album.title %></h1>
+<img width="300" height="300" src="https://vignette.wikia.nocookie.net/macross/images/f/fb/Walkure-Macross-Delta-Macross-Anime-3005608.jpeg" >
+    <br>
+    <a href="<%= edit_album_url(@album) %>">Edit <%= @album.title %></a>
+    <br>
+    <a href="<%= new_album_track_url(@album) %>">Add Song</a>
+
+  <h2>Song list</h2>
+    <ul>
+    <% @album.tracks.each do |track| %>
+        <li><a href="<%= track_url(track) %>"><%= track.title %></a></li>
+    <% end %>
+    </ul>
+
+
+    <form action="<%= album_url(@album.id) %>" method="POST">
+        <%= auth_token %>
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete album" />
+    </form>

@@ -1,0 +1,14 @@
+  <h1><%= @band.name %></h1>
+<img height="300" src="https://cdn.shopify.com/s/files/1/1578/5251/products/4573471948752rr_x700.jpg" >
+    <br>
+    <a href="<%= edit_band_url(@band) %>">Edit <%= @band.name %></a>
+    <a href="<%= new_band_album_url(@band) %>">Add Album</a>
+    <br>
+  <h2>Album list</h2>
+    <ul>
+    <% @band.albums.each do |album| %>
+        <li><a href="<%= album_url(album) %>"><%= album.title %></a></li>
+    <% end %>
+    </ul>
+
+    
