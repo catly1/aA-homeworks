@@ -1,0 +1,11 @@
+  <h1><%= @track.title %></h1>
+<img width="300" height="300" src="https://vignette.wikia.nocookie.net/macross/images/f/fb/Walkure-Macross-Delta-Macross-Anime-3005608.jpeg" >
+    <br>
+    <a href="<%= edit_track_url(@track) %>">Edit <%= @track.title %></a>
+<br>
+<br>
+    <form action="<%= track_url(@track.id) %>" method="POST">
+        <%= auth_token %>
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete track" />
+    </form>
