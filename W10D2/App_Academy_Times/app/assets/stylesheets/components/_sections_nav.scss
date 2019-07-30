@@ -1,0 +1,29 @@
+.sections-nav{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #e2e2e2;
+    font-family: sans-serif;
+    font: menu;
+    flex-wrap: wrap;
+    
+}
+
+.sections-nav li{
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.sections-nav li:hover{
+    background-color: #e2e2e2;
+}
+
+.sections-nav li:last-of-type{
+    font-variant: all-petite-caps;
+}
+
+.sections-nav li:last-of-type:hover{
+    background-color: white;
+    text-decoration: underline;
+}
+
