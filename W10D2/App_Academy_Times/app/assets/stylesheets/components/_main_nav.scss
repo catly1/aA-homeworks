@@ -49,10 +49,16 @@
 
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
         
 .main-nav {
     justify-content: center;
 }
+.right-nav > ul > li:not(:last-child) {
+    display: none;
+}
 
+.left-nav {
+    
+}
 }

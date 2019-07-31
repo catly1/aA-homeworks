@@ -1,19 +1,66 @@
 .col {
-  // ...
+  display: flex;
+  
+
+
 }
 
 /* Attribute selector targeting all elements
 with a class attribute containing 'col-' */
 [class*='col-'] {
-  // ...
+  padding: 8px;
 }
+
+
+.col-left {
+  width: 20%
+}
+
+.col-center {
+  box-sizing: content-box;
+  width: 50%
+}
+
+.col-right {
+
+  width: 30%
+}
+
 
 [class*='col-']:last-of-type {
   // ...
+  padding-right: 0;
+  justify-content: center;
 }
+
+
+
+[class*='col-']:last-of-type ul > li {
+  width: 50%;
+}
+
+
+
 
 @media all and (max-width: 1000px) {
   [class*='col-'] {
-    // width:
+   width: 100%;
+    
   }
+
+  .col{
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+
+
+  .col-right > ul {
+    flex-direction: column;
+  }
+
+  [class*='col-']:last-of-type ul > li {
+    width: 100%;
+  }
+
 }

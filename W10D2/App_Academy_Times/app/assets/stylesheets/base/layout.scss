@@ -5,6 +5,10 @@ html {
 	height: 100%;
 }
 
+*{
+	box-sizing: inherit;
+}
+
 body {
 	width: 80%;
 	margin: 0 auto;
@@ -35,6 +39,11 @@ button:hover {
 	border-color: #4d7b9f;
 }
 
+img{
+	width: 100%;
+	height: 100%;
+}
+
 /*
 	Header Rules
 */
@@ -54,3 +63,10 @@ hr {
 	height: 2px;
 	margin-bottom: 1px;
 }
+
+/*gear-dropdown*/
+
+.gear-dropdown.hidden{
+	display: none;
+}
+

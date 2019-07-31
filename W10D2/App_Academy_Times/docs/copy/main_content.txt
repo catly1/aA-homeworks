@@ -1,3 +1,4 @@
+
 Launching the New React/Redux Curriculum
 By APP ACADEMY INSTRUCTIONAL TEAM
 
