@@ -1,0 +1,29 @@
+<h1>Edit</h1>
+
+<form action="<%= sub_url(@sub) %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <%= auth_token_input %>
+    <label>Title</label>
+    <br>
+    <input type="text" value="<%= @sub.title%>" name="sub[title]">
+    <br>
+    <label>Description</label>
+    <br>
+    <textarea type="text" name="sub[description]"><%= @sub.description%></textarea>
+    <br>
+    <label for="moderator"> Moderator </label>
+    <br>
+    <select name="sub[moderator_id]">
+        <option> --Select Moderator</option>
+        <% User.all.each do |user| %>
+            <option value="<%= user.id%>"
+            <%= user.id == @sub.moderator_id ? "selected" : "" %>
+            >
+            <%= user.username %>
+            </option>
+        <% end %>
+    </select>
+
+    <br>
+    <input type="submit" value="edit sub">
+</form>

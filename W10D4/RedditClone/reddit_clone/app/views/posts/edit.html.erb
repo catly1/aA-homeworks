@@ -1,0 +1,33 @@
+<h1>Edit Post</h1>
+
+<form action="<%= post_url(@post) %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+    <%= auth_token_input %>
+    <label>Title</label>
+        <br>
+        <input type="text" value="<%= @post.title%>" name="post[title]">
+        <br>
+    <label>URL</label>
+        <br>
+        <input type="text" value="<%= @post.url%>" name="post[url]">
+        <br>
+    <label>Content</label>
+        <br>
+        <textarea name="post[content]"><%= @post.content%></textarea>
+        <br>
+
+    <label for="sub"> Sub </label>
+    <br>
+    <select name="post[sub_id]">
+        <option> --Select sub--</option>
+        <% Sub.all.each do |sub| %>
+            <option value="<%= sub.id%>"
+            <%= sub.id == @post.sub_id ? "selected" : "" %>
+            >
+            <%= sub.title %>
+            </option>
+        <% end %>
+    </select>
+    <br>
+    <input type="submit" value="Submit">
+</form>
