@@ -18,16 +18,12 @@
 
     <label for="sub"> Sub </label>
     <br>
-    <select name="post[sub_id]">
-        <option> --Select sub--</option>
         <% Sub.all.each do |sub| %>
-            <option value="<%= sub.id%>"
-            <%= sub.id == @post.sub_id ? "selected" : "" %>
-            >
+            <label>
+            <input type="checkbox" name="post[sub_id]" value="<%= sub.id %>" >
             <%= sub.title %>
-            </option>
+            </label>
         <% end %>
-    </select>
     <br>
     <input type="submit" value="Submit">
 </form>
