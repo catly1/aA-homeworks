@@ -81,7 +81,7 @@ function fizzBuzz(array) {
     return arr;
 }
 
-console.log(fizzBuzz([3,4,5,8]))
+// console.log(fizzBuzz([3,4,5,8]))
 
 // isPrime
 
@@ -97,7 +97,7 @@ function isPrime(n) {
     return true;
 }
 
-console.log(isPrime(3))
+// console.log(isPrime(3))
 
 // sumOfNPrimes
 
@@ -117,4 +117,19 @@ function sumOfNPrimes(n) {
     return sum;
 }
 
-console.log(sumOfNPrimes(4))
+// console.log(sumOfNPrimes(4))
+
+Array.prototype.transpose = function () {
+    const tranposed = []
+    for (let i = 0; i < this.length; i++){
+        const row = []
+        for (let j = 0; j < this.length; j++) {
+        row.push(this[j][i])
+        }
+
+        tranposed.push(row)
+    }
+    return tranposed
+}
+
+console.log([[1,3],[5,6]].transpose())
