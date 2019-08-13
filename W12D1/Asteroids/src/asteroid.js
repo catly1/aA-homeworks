@@ -19,13 +19,14 @@ function Asteroid(pos, game) {
 Util.inherits(Asteroid, MovingObject);
 
 Asteroid.prototype.collideWith = function (otherObject) {
+    // debugger
     if (otherObject instanceof Ship) {
         // debugger
         otherObject.relocate();
     } else {
         // debugger
-        this.game.remove(this);
-        this.game.remove(otherObject);
+        // this.game.remove(this);
+        // this.game.remove(otherObject);
     }
 };
 
