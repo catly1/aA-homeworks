@@ -1,0 +1,79 @@
+    /* $ul.addClass("group");
+    $ul.css("display", "flex");
+    $ul.css("width", "300");
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
+      for (let colIdx = 0; colIdx < 3; colIdx++) {
+        let $li = $("<li>");
+        $li.data("pos", [rowIdx, colIdx]);
+        $li.css("flex-wrap", "wrap");
+        $li.css("width", "100");
+        $li.css("border", "5px solid black"); */
+
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+h1 {
+font-size: 60px;
+margin: 30px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: gray;
+  list-style: none;
+  border: 5px solid black;
+  width: 300px;
+  height: 300px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 60px;
+  line-height: 80px;
+  font-family: sans-serif;
+  border: 5px solid black;
+  width: 90px;
+  height: 90px;
+}
+
+li:hover {
+  background-color: yellow;
+}
+
+.o, .x {
+  margin: auto;
+  background-color: white;
+}
+
+
+.o:hover, .x:hover {
+    background-color: white;
+}
+
+.x:after {
+    content: "x";
+}
+
+.o:after {
+    content: "o";
+}
+
+.winner {
+  background: green;
+  color: white;
+}
+
+.loser {
+  color: red;
+}
