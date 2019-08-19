@@ -1,0 +1,65 @@
+html,body, header, nav, a, ul, li, main, 
+button, p, footer, span, h1, div{
+   margin: 0;
+   padding: 0;
+   color: inherit;
+   text-align: inherit;
+   background: transparent;
+}
+
+.main{
+   width: 450px;
+   display: block;
+   margin: 0 auto;
+}
+
+.clock {
+   background: rgba(0, 0, 0, 0.911);
+   font-family: 'Nunito', sans-serif;
+   color: aliceblue;
+   box-shadow: 2px 2px rgb(187, 187, 187); 
+   padding: 10px;
+}
+
+.clock > p {
+   display: flex;
+   justify-content: space-between;
+}
+
+.tab-main{
+   width: 450px;
+   display:block;
+   margin: 0 auto;
+   padding-top: 40px;
+}
+
+.tab-main > ul{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   list-style: none;
+   position: absolute;
+   flex-direction: row;
+   background: lightblue;
+}
+
+.tab-main li{
+   display: flex;
+   flex-direction: column;
+   position: relative;
+}
+
+.active {
+    z-index: 5;
+    
+}
+
+#list-body{
+   display: none;
+}
+
+
+.active #list-body {
+    display: block;
+}
