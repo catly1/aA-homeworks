@@ -233,10 +233,10 @@ function (_React$Component) {
       var giphy = this.props.giphy; // debugger
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "giphy-li",
         key: giphy.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: giphy.images.original.url,
-        alt: ""
+        src: giphy.images.original.url
       }));
     }
   }]);
@@ -302,23 +302,17 @@ function (_React$Component) {
 
   _createClass(GiphysSearch, [{
     key: "handleChange",
-    value: function handleChange() {
-      var _this2 = this;
-
-      return function (e) {
-        _this2.setState({
-          search: e.target.value
-        });
-      };
+    value: function handleChange(e) {
+      this.setState({
+        search: e.target.value
+      });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault(); // debugger
-
-      var giphy = Object.assign({}, this.state);
-      this.props.fetchSearchGiphys(giphy);
-      debugger;
+      e.preventDefault();
+      var search = this.state.search.split(' ').join('+');
+      this.props.fetchSearchGiphys(search);
       this.setState({
         search: ""
       });
@@ -331,7 +325,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.search,
-        onChange: this.handleChange()
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Search"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_giphys_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         giphys: this.props.giphys
       }));
@@ -24146,6 +24140,7 @@ var giphysReducer = function giphysReducer() {
 
   switch (action.type) {
     case _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH_GIPHYS"]:
+      // debugger 
       return action.giphys;
 
     default:
@@ -24207,6 +24202,7 @@ var configureStore = function configureStore() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSearchGiphys", function() { return fetchSearchGiphys; });
 var fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
+  // debugger
   return $.ajax({
     method: 'GET',
     url: "http://api.giphy.com/v1/gifs/search?q=".concat(searchTerm, "&api_key=dc6zaTOxFJmzC&limit=2")

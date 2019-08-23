@@ -15,19 +15,14 @@ class GiphysSearch extends React.Component {
     }
 
 
-    handleChange(){
-        return e => {
+    handleChange(e){
             this.setState({ search: e.target.value })
-        }
-
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger
-        const giphy = Object.assign({}, this.state)
-        this.props.fetchSearchGiphys(giphy);
-        debugger
+        const search = this.state.search.split(' ').join('+')
+        this.props.fetchSearchGiphys(search);
         this.setState({
             search: "",
         })
@@ -39,7 +34,7 @@ class GiphysSearch extends React.Component {
                     <input
                     type="text"
                     value={this.state.search}
-                    onChange={this.handleChange()} />
+                    onChange={this.handleChange} />
             </label>
             <button>Search</button>
 
