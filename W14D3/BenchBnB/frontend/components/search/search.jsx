@@ -5,9 +5,9 @@ import BenchMap from "../bench/bench_map"
 class Search extends React.Component{
   render(){
     //   debugger
-    return (<div>
-      <BenchIndex benches={this.props.benches} fetchBenches={this.props.fetchBenches}/>
-      <BenchMap benches={this.props.benches}/>
+    return (<div className="main">
+      <BenchMap benches={this.props.benches} updateBounds={this.props.updateBounds} updateFilter={this.props.updateFilter}/>
+      <BenchIndex benches={this.props.benches} fetchBenches={this.props.fetchBenches} updateFilter={this.props.updateFilter}/>
     </div>)
   }
 }

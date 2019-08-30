@@ -17,3 +17,26 @@
   width: 500px;
   height: 500px;
 }
+
+.main{
+  display: flex;
+  justify-content: center;
+}
+
+.bench-index {
+  overflow-y: scroll;
+}
+
+.bench-index ul {
+  margin: 0 auto;
+  list-style: none;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bench-description{
+  background-color: lightgoldenrodyellow;
+  border-bottom: solid black 2px;
+  padding: 10px;
+}

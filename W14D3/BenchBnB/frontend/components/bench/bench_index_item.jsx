@@ -4,7 +4,7 @@ class BenchIndexItem extends React.Component {
 
     render() {
         return (
-            <li>
+            <li className="bench-description">
                 <h3>{this.props.bench.description}</h3>
                 <p>longitude: {this.props.bench.lng}</p>
                 <p>latitude: {this.props.bench.lat}</p>
