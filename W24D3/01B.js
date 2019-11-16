@@ -69,5 +69,40 @@
 // Write a method that takes a string as input. It should return true if the input is a valid IPv4 address (ie. anything between 0.0.0.0 and 255.255.255.255 is valid).
 
 function valid_ip(str){
-
+  let arr = str.split(".")
+  if (arr.length < 4) return false
+  let numsArr = arr.map(ele => parseInt(ele))
+  return numsArr.every(ele => ele <= 255 && ele >= 0)
 }
+
+// console.log(valid_ip("255.255.255.255"))
+// console.log(valid_ip("0.0.0.0"))
+// console.log(valid_ip("1.255.0.0"))
+// console.log(valid_ip("-1.255.0.0"))
+
+// sum_from_file
+// Write a method that reads in a file of integers, one per line, and sums them. Skip the line if it begins with a "#".
+
+// function sum_from_file(filename){
+
+// }
+
+// shufle
+// You are given an array and a random number generator. Shuffle the array.
+
+function shuffle(array){
+  let newArr = []
+
+  while (newArr.length < array.length) {
+    let index = Math.floor(Math.random() * array.length)
+    while (newArr.includes(array[index])) {
+      index = Math.floor(Math.random() * array.length)
+    }
+
+    newArr.push(array[index])
+  }
+
+  return newArr
+}
+
+console.log(shuffle([1,2,3,4]))
