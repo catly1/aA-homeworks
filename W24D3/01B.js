@@ -90,19 +90,36 @@ function valid_ip(str){
 // shufle
 // You are given an array and a random number generator. Shuffle the array.
 
-function shuffle(array){
-  let newArr = []
+// function shuffle(array){
+//   let newArr = []
 
-  while (newArr.length < array.length) {
-    let index = Math.floor(Math.random() * array.length)
-    while (newArr.includes(array[index])) {
-      index = Math.floor(Math.random() * array.length)
-    }
+//   while (newArr.length < array.length) {
+//     let index = Math.floor(Math.random() * array.length)
+//     while (newArr.includes(array[index])) {
+//       index = Math.floor(Math.random() * array.length)
+//     }
 
-    newArr.push(array[index])
-  }
+//     newArr.push(array[index])
+//   }
 
-  return newArr
-}
+//   return newArr
+// }
 
-console.log(shuffle([1,2,3,4]))
+// console.log(shuffle([1,2,3,4]))
+
+let x = 2;
+let y = 8;
+const a = function (b) { return function (c) {
+  console.log(x)
+  console.log(b) 
+  console.log(c)
+  console.log(y)
+  return x + y + Math.abs(b) + c; } };
+
+// Statement will go 
+y = 4
+
+const fn = a(x);
+console.log("first", x, fn)
+x = 4;
+console.log(fn(Math.random() * 10));
