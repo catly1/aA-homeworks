@@ -107,19 +107,31 @@ function valid_ip(str){
 
 // console.log(shuffle([1,2,3,4]))
 
-let x = 2;
-let y = 8;
-const a = function (b) { return function (c) {
-  console.log(x)
-  console.log(b) 
-  console.log(c)
-  console.log(y)
-  return x + y + Math.abs(b) + c; } };
+// let x = 2;
+// let y = 8;
+// const a = function (b) { return function (c) {
+//   console.log(x)
+//   console.log(b) 
+//   console.log(c)
+//   console.log(y)
+//   return x + y + Math.abs(b) + c; } };
 
-// Statement will go 
-y = 4
+// // Statement will go 
+// y = 4
 
-const fn = a(x);
-console.log("first", x, fn)
-x = 4;
-console.log(fn(Math.random() * 10));
+// const fn = a(x);
+// console.log("first", x, fn)
+// x = 4;
+// console.log(fn(Math.random() * 10));
+
+// myMap
+// Implement the Array.prototype.map function in JavaScript.
+
+//03A
+Array.prototype.myMap = function(fn) {
+  let mapped = []
+
+  this.forEach(ele => mapped.push(fn(ele)))
+
+  return mapped
+}
