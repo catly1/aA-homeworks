@@ -128,10 +128,76 @@ function valid_ip(str){
 // Implement the Array.prototype.map function in JavaScript.
 
 //03A
-Array.prototype.myMap = function(fn) {
-  let mapped = []
+// Array.prototype.myMap = function(fn) {
+//   let mapped = []
 
-  this.forEach(ele => mapped.push(fn(ele)))
+//   this.forEach(ele => mapped.push(fn(ele)))
 
-  return mapped
+//   return mapped
+// }
+
+// SELECT
+//   employees.*
+// FROM
+//   employees e
+// JOIN
+//   departments d ON e.department_id = d.id
+// WHERE
+//   d.name = ?
+
+
+// uniq_subs
+// Write a method that finds all the unique substrings for a word.
+
+function uniqSubs(str){
+  let subs = []
+
+  for (let i = 0; i < str.length; i++){
+    for (let j = i + 1; j <= str.length; j++ ){
+      subs.push(str.slice(i,j))
+    }
+  }
+
+  return subs
 }
+
+// largest_contiguous_subsum
+// Given an array of integers (positive and negative) find the largest contiguous subsum (sum of a subarray).
+
+// console.log(uniqSubs("cat"))
+
+function largestContSubSum(arr){
+  let sub = []
+  let max = -Infinity
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j <= arr.length; j++) {
+      let sliced = arr.slice(i, j)
+      let sum = sliced.reduce((a, b) => a + b)
+      if (sum > max) {
+        sub = sliced
+        max = sum
+      }
+    }
+  }
+
+  return sub
+}
+
+
+// console.log(largestContSubSum([1,3,4,5]))
+
+// foldingCipher
+
+// Implement the Folding Cipher. It folds the alphabet in half and uses the adjacent letter. Ie. a <=> z, b <=> y, c <=> x, m <=> n.
+function foldingCipher(str){
+  let hash = {}
+  let alphabet = "abcdefghijklmnopqrstuvwxyz"
+  for (let i = 0; i < alphabet.length; i++){
+    hash[alphabet[i]] = alphabet[alphabet.length - 1 - i]
+  }
+
+  return hash
+}
+
+console.log(foldingCipher("test"))
